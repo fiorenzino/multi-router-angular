@@ -1,0 +1,22 @@
+<section class="user-list">
+  <div>
+    <ul>
+      @for (user of users$|async; track user.id) {
+        <li>
+          <button [routerLink]="['',{outlets:{post:['post',user.id], comment:null }}]">
+            {{ user.name }}
+          </button>
+          <button [routerLink]="['',{outlets:{single1:['single1',user.id], comment:null }}]">
+            1
+          </button>
+          <button [routerLink]="['',{outlets:{single2:['single2',user.id], comment:null }}]">
+            2
+          </button>
+          <button [routerLink]="['',{outlets:{single3:['single3',user.id], comment:null }}]">
+            3
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<section class="post-list">
+  <a [routerLink]="['', { outlets: { post:null } }]">close</a>
+  <h1>Post</h1>
+  <div>
+    <ul>
+      @for (post of posts$|async; track post.id) {
+        <li class="post">
+          <div class="title"><h3>{{ post.title }}</h3></div>
+          <div class="body">{{ post.body }}</div>
+          <button [routerLink]="['',{outlets:{comment:['comment',post.id]}}]">
+            read comments
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

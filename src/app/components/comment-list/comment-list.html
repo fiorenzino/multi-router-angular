@@ -1,0 +1,14 @@
+<section class="comment-list">
+  <a [routerLink]="['', { outlets: { comment:null } }]">close</a>
+  <h1>Comments</h1>
+  <div>
+    <ul>
+      @for (comment of comments$|async; track comment.id) {
+        <li>
+          <div>{{ comment.name }}</div>
+          <p>{{ comment.body }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

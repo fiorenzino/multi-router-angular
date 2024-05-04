@@ -20,9 +20,7 @@ export class SingleListComponent implements OnInit, AfterViewInit {
     @ViewChild('el') el: ElementRef | null = null;
     outlet: string = '';
     activatedRoute = inject(ActivatedRoute);
-    router = inject(Router);
     userService = inject(UserService);
-    route = inject(ActivatedRoute);
     posts$: Observable<IPost[]> = this.activatedRoute.paramMap.pipe(
         switchMap((data) => {
             if (this.el)
@@ -36,21 +34,10 @@ export class SingleListComponent implements OnInit, AfterViewInit {
         if (this.el)
             this.el.nativeElement.style.visibility = 'visible';
         this.outlet = this.activatedRoute.outlet;
-        console.log("outlet:" + this.route.outlet);
-        console.log(this.route.snapshot); // ActivatedRouteSnapshot
-        console.log(this.route.snapshot.url); // UrlSegment[]
-        console.log(this.route.snapshot.url[0]); // UrlSegment
-        console.log(this.route.snapshot.url[0].path); // e.g. /products
-        console.log(this.route.snapshot.url[0].parameters); // e.g. { id: 'x8klP0' }
     }
 
     close() {
         if (this.el)
             this.el.nativeElement.style.visibility = 'hidden';
-        console.log(this.route.outlet);
-        this.router.navigate(['', {outlets: {outlet: null}}]).then(
-            result => console.log(result)
-        )
-        ;
     }
 }

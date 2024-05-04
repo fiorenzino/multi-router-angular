@@ -17,8 +17,6 @@ export class CommentListComponent implements AfterViewInit {
   router = inject(ActivatedRoute);
   comments$ = this.router.paramMap.pipe(
     switchMap((value) => {
-      if (this.el)
-        this.el.nativeElement.style.display = 'none';
       return this.userService.getComments(value.get('id'));
     })
   );
